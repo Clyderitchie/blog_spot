@@ -11,4 +11,4 @@ Post.belongsTo(User, {
 });
 
 
-Model.exports = { User, Post };
+module.exports = { User, Post };

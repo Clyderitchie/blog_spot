@@ -1,6 +1,45 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
+// Finds all users of the blog post website
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.findAll();
+        res.status(200).json(users);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err.message);
+    }
+}); // Working in thunder client
+
+// Finds a certain user by their user_id
+router.get('/:id', async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.id,)
+        res.status(200).json(user);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err.message);
+    }
+}); // Working in thunder client
+
+// Updates a user for the blog post website
+router.put('/:id', async (req, res) => {
+    try {
+        const newUser = await User.update(
+            { name: req.body.name },
+            { email: req.body.email },
+            { password: req.body.password },
+            { where: { id: req.params.id } }
+        )
+        res.status(200).json(newUser);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err.message);
+    }
+}) // needs work some more
+
 router.post('/', async (req, res) => {
     try {
         const userData = await User.create(req.body);
@@ -15,7 +54,7 @@ router.post('/', async (req, res) => {
         console.log(err.message);
         res.status(500).json(err.message);
     }
-})
+});
 
 router.post('/login', async (req, res) => {
     try {
@@ -44,7 +83,7 @@ router.post('/login', async (req, res) => {
         console.log(err.message);
         res.status(500).json(err.message);
     }
-})
+});
 
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
@@ -54,7 +93,7 @@ router.post('/logout', (req, res) => {
     } else {
         res.status(404).end();
     }
-})
+});
 
 
 module.exports = router;

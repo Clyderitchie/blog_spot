@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post } = require('../models');
+const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 // This get req is showing each of the posts that are within the seeds to act like a home page main feed
@@ -52,11 +52,8 @@ router.get('/posts/:id', async (req, res) => {
         console.log(err.message);
         res.status(500).json(err.message);
     }
-}); // Working 
+});  
 
-// Expecting this code to render a profile like page for a user of the Blog Spot
-// Expecting to see each post that the user has made to the Blog Spot website
-// Getting an error saying failed to lookup view "login" in views
 router.get('/profile', async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -73,7 +70,7 @@ router.get('/profile', async (req, res) => {
         console.log(err.message);
         res.status(500).json(err.message);
     }
-});
+}); // Working
 
 router.get('/users/:id', async (req, res) => {
     try {
@@ -89,15 +86,6 @@ router.get('/users/:id', async (req, res) => {
         console.log(err.message);
         res.status(500).json(err.message);
     }
-})
+}); // Working
 
 module.exports = router
-
-
-// want to know if the api routes for creating a user are in the right spot 
-// want to know if the api routes for the post are in the right spot such as get all of them get all of a single users post
-// create a new post and things of that nature
-
-// want to know why the .get for /profile is not rendering correctly to the page
-// where would I add the routes for adding a comment section for the post
-// I believe it would be adding another Model, adding it in routes to like for example /comment and then creating a handlebar for it

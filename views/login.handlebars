@@ -1,6 +1,7 @@
 {{!-- Login form for a returning user to login --}}
 <h2>Login</h2>
 <div class="mb-3">
+<form class="login-form">
  <label for="email-login">Email:</label>
     <input class="form-input" type="text" id="email-login" />
 </div>
@@ -10,11 +11,13 @@
 </div>
 <div class="col">
     <button class="btn btn-primary" type="submit">Login</button>
+    </form>
 </div>
 
 {{!-- Sign up form for a new user to sign up for the website --}}
 <h2>Sign up</h2>
 
+<form class="signup-form">
 <div class="mb-3">
  <label for="name-signup">name:</label>
         <input class="form-input" type="text" id="name-signup" />
@@ -30,5 +33,6 @@
 <div class="col">
    <button class="btn btn-primary" type="submit">Sign Up</button>
 </div>
+</form>
 
 <script src="/js/login.js"></script>

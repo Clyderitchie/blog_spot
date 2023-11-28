@@ -1,19 +1,41 @@
-<div>
-    <h2>{{user.name}}</h2>
+{{!-- For this handlebar I am expecting it to create the users page and show the users posts as
+well as allow them to create a new post --}}
+<div class="d-flex justify-content-center mb-3">
+    <h2 class="fs-1">
+        {{user.name}}
+    </h2>
+</div>
+<div class="card mb-3">
     <div class="userPost">
         {{#each user.posts}}
-
-        <h2>{{title}}</h2>
-
-        <p>{{content}}</p>
-        <p>Created on: {{format_date date_created}}</p>
+        <div class="card-header">
+            <h2>{{title}}</h2>
+        </div>
+        <div class="card-body">
+            <p>{{content}}</p>
+            <p>Created on: {{format_date date_created}}</p>
+        </div>
         {{/each}}
     </div>
 </div>
 
-<h2>Create a new post</h2>
 
+<h3>Create a new post</h3>
 <form class="form project-form">
+<div class="mb-3">
+  <label for="formGroupExampleInput" class="form-label">Title:</label>
+  <input type="text" class="form-control" id="title" placeholder="Title">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">Content:</label>
+  <input type="text" class="form-control" id="content" placeholder="Content">
+</div>
+<div class="mb-3">
+     <button class="btn btn-primary" type="submit">Create</button>
+</div>
+</form>
+
+{{!-- <form class="form project-form">
     <div class="form-group">
         <label for="name">Title:</label>
         <input class="form-input" type="text" id="title" />
@@ -25,8 +47,4 @@
     <div class="form-group">
         <button class="btn btn-primary" type="submit">Create</button>
     </div>
-</form>
-
-
-{{!-- For this handlebar I am expecting it to create the users page and show the users posts as
-well as allow them to create a new post --}}
+</form> --}}

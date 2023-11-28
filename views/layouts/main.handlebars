@@ -20,14 +20,21 @@
                 </h1>
 
                 {{#if logged_in}}
-                <a href="/profile">profile</a>
-                <button class="btn-primary" id="logout">logout</button>
+                <button class="btn-primary" id="profile">
+                    <a class="text-decoration-none text-dark text-center" href="../user.handlebars">Profile</a>
+                </button>
+                <button class="btn-primary" id="logout">
+                    Logout
+                </button>
                 {{else}}
-                <a href="/login"> <button class="btn-primary">login</button></a>
+                <button class="btn-primary">
+                    <a href="/login">Login</a>
+                    </button>
                 {{/if}}
             </div>
         </nav>
     </header>
+    
     <main class="container container-fluid mt-5">
         {{{ body }}}
     </main>

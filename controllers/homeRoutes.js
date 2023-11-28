@@ -74,3 +74,12 @@ router.get('/profile', withAuth, async (req, res) => {
 })
 
 module.exports = router
+
+
+// want to know if the api routes for creating a user are in the right spot 
+// want to know if the api routes for the post are in the right spot such as get all of them get all of a single users post
+// create a new post and things of that nature
+
+// want to know why the .get for /profile is not rendering correctly to the page
+// where would I add the routes for adding a comment section for the post
+// I believe it would be adding another Model, adding it in routes to like for example /comment and then creating a handlebar for it

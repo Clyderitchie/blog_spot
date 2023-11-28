@@ -1,14 +1,20 @@
 {{!-- List of current posts on the Blog Spot website --}}
-<div>
+{{!-- I am expecting this code to render each of the post for the users of the Blog Spot like a home page on a social
+media application such as Twitter(X) or Facebook --}}
+
+<div class="card">
     {{#each posts}}
     <a href="/posts/{{id}}">
-    <h2>{{title}}</h2>
+        <div class="card-header">
+            {{title}}
+        </div>
     </a>
-    <p>{{content}}</p>
-    <p>Created by: {{user.name}} on {{format_date date_created}}</p>
+    <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        <p class="card-text">{{content}}</p>
+        <p class="card-text">Created By: <a class="text-decoration-none text-dark" href="/users/{{id}}">{{user.name}}</a> on {{format_date date_created}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
 
     {{/each}}
 </div>
-
-{{!-- I am expecting this code to render each of the post for the users of the Blog Spot like a home page on a social 
-media application such as Twitter(X) or Facebook --}}

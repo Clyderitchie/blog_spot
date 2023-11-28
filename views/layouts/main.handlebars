@@ -5,23 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Spot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
-    <header class="display-flex justify-space-between align-center p-2">
-        <h1>
-            <a href="/">
-                Welcome to the Blog Spot!
-            </a>
-        </h1>
-        {{!-- <nav>
-            {{#if logged_in}}
-            <a href="/profile">profile</a>
-            <button class="btn" id="logout">logout</button>
-            {{else}}
-            <a href="/login"> <button class="btn">login</button></a>
-            {{/if}}
-        </nav> --}}
+    <header class="display-flex justify-space-between align-center p-2 border-bottom border border-4">
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <h1>
+                    <a href="/" class="text-decoration-none text-dark text-center">
+                        Welcome to the Blog Spot!
+                    </a>
+                </h1>
+
+                {{#if logged_in}}
+                <a href="/profile">profile</a>
+                <button class="btn-primary" id="logout">logout</button>
+                {{else}}
+                <a href="/login"> <button class="btn-primary">login</button></a>
+                {{/if}}
+            </div>
+        </nav>
     </header>
     <main class="container container-fluid mt-5">
         {{{ body }}}
@@ -30,9 +35,16 @@
 
     </footer>
 
-    {{!-- {{#if logged_in}}
+    {{#if logged_in}}
     <script src="/js/logout.js"></script>
-    {{/if}} --}}
+    {{/if}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </body>
 
 </html>
+
+{{!-- TODO:
+Add in some BootStrap styling
+Make the HEADER and FOOTER appear on each screen
+--}}

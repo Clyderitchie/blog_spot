@@ -44,6 +44,7 @@ router.get('/posts/:id', async (req, res) => {
         }
         )
         const post = postData.get({ plain: true });
+        console.log(post);
         res.render('singlePost', {
             ...post,
             logged_in: req.session.logged_in
@@ -54,7 +55,7 @@ router.get('/posts/:id', async (req, res) => {
     }
 });  
 
-router.get('/profile', async (req, res) => {
+router.get('/profile', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
             where: {
@@ -78,8 +79,7 @@ router.get('/users/:id', async (req, res) => {
             include: [Post]
         })
         const user = userData.get({ plain: true })
-        console.log(user);
-        res.render('profile', {
+        res.render('user', {
             user,
             logged_in: req.session.logged_in
         })

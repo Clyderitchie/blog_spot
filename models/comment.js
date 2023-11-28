@@ -11,10 +11,6 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         content: {
             type: DataTypes.STRING,
         },
@@ -31,6 +27,11 @@ Comment.init(
                 model: 'post',
                 key: 'id',
             },
+        },
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
         },
     },
     {

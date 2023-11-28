@@ -18,23 +18,24 @@
                         Welcome to the Blog Spot!
                     </a>
                 </h1>
-
-                {{#if logged_in}}
-                <button class="btn-primary" id="profile">
-                    <a class="text-decoration-none text-dark text-center" href="../user.handlebars">Profile</a>
-                </button>
-                <button class="btn-primary" id="logout">
-                    Logout
-                </button>
-                {{else}}
-                <button class="btn-primary">
-                    <a href="/login">Login</a>
+                <div class="pr-4 pl-4">
+                    {{#if logged_in}}
+                    <button class="btn-primary" id="profile">
+                        <a class="text-decoration-none text-dark text-center" href="/profile">Profile</a>
                     </button>
-                {{/if}}
+                    <button class="btn-primary" id="logout">
+                        Logout
+                    </button>
+                    {{else}}
+                    <button class="btn-primary">
+                        <a class="text-decoration-none text-dark text-center" href="/login">Login</a>
+                    </button>
+                    {{/if}}
+                </div>
             </div>
         </nav>
     </header>
-    
+
     <main class="container container-fluid mt-5">
         {{{ body }}}
     </main>

@@ -1,13 +1,13 @@
 {{!-- For this handlebar I am expecting it to create the users page and show the users posts as
 well as allow them to create a new post --}}
 <div class="d-flex justify-content-center mb-3">
-    <h2 class="fs-1">
+    {{!-- <h2 class="fs-1">
         {{user.name}}
-    </h2>
+    </h2> --}}
 </div>
 <div class="card mb-3">
     <div class="userPost">
-        {{#each user.posts}}
+        {{#each posts}}
         <div class="card-header">
             <h2>{{title}}</h2>
         </div>
@@ -19,9 +19,9 @@ well as allow them to create a new post --}}
     </div>
 </div>
 
-
+{{#if logged_in}}
 <h3>Create a new post</h3>
-<form class="form project-form">
+<form id="newPost" class="form project-form">
     <div class="mb-3">
         <label for="formGroupExampleInput" class="form-label">Title:</label>
         <input type="text" class="form-control" id="title" placeholder="Title">
@@ -34,3 +34,7 @@ well as allow them to create a new post --}}
         <button class="btn btn-primary" type="submit">Create</button>
     </div>
 </form>
+{{else}}
+<p>You must be logged in to create a new post</p>
+{{/if}}
+<script src="/js/post.js"></script>

@@ -1,29 +1,38 @@
 {{!-- Renders a users profile --}}
+<div id="post-container">
 {{#each posts}}
 <div class="card mb-3">
-    <div class="userPost">
-        <div class="card-header">
-            <h2>{{title}}</h2>
-        </div>
-        <div class="card-body">
-            <p>{{content}}</p>
-            <p>Created on: {{format_date date_created}}</p>
-        </div>
+  <div class="userPost">
+    <div class="card-header">
+      <h2>{{title}}</h2>
     </div>
+    <div class="card-body">
+      <p>{{content}}</p>
+      <p>Created on: {{format_date date_created}}</p>
+      <form id="edit-btn">
+        <a href="/edit/{{id}}"> 
+        <button type="button" class="btn">Edit</button>
+        </a>
+        <button id="deleteBtn" type="button" data-id={{id}} class="btn">Delete</button>
+      </form>
+    </div>
+  </div>
 </div>
 {{/each}}
+</div>
 
 {{!-- Allows for a user to add comments to their post if they are logged in --}}
 <input id="postId" type="hidden" value="{{id}}">
-  {{#each comments}}
-  <div class="card comment mt-3">
-    <div class="card-body">
-      <p class="card-text fs-4">{{content}}</p>
-       <p class="card-text">Created By: <a class="text-decoration-none text-dark" href="/users/{{user.id}}">{{user.name}}</a> on
+{{#each comments}}
+<div class="card comment mt-3">
+  <div class="card-body">
+    <p class="card-text fs-4">{{content}}</p>
+    <p class="card-text">Created By: <a class="text-decoration-none text-dark"
+        href="/users/{{user.id}}">{{user.name}}</a> on
       {{format_date date_created}}</p>
-    </div>
-   {{/each}}
   </div>
+  {{/each}}
+</div>
 <div class="card mt-3">
   {{#if logged_in}}
   <form id="addComment">
@@ -42,20 +51,22 @@
 {{#if logged_in}}
 <h3>Create a new post</h3>
 <form id="newPost" class="form project-form">
-    <div class="mb-3">
-        <label for="formGroupExampleInput" class="form-label">Title:</label>
-        <input type="text" class="form-control" id="title" placeholder="Title">
-    </div>
-    <div class="mb-3">
-        <label for="formGroupExampleInput2" class="form-label">Content:</label>
-        <input type="text" class="form-control" id="content" placeholder="Content">
-    </div>
-    <div class="mb-3">
-        <button class="btn btn-primary" type="submit">Create</button>
-    </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Title:</label>
+    <input type="text" class="form-control" id="title" placeholder="Title">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Content:</label>
+    <input type="text" class="form-control" id="content" placeholder="Content">
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary" type="submit">Create</button>
+  </div>
 </form>
 {{else}}
 <p>You must be logged in to create a new post</p>
 {{/if}}
+
+
 <script src="/js/post.js"></script>
 <script src="/js/commentBtn.js"></script>

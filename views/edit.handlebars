@@ -1,14 +1,17 @@
 {{!-- Will allow a user who is logged in to edit or delete their posts --}}
-{{#each posts}}
-<div class="card mb-3">
-    <div class="userPost">
-        <div class="card-header">
-            <h2>{{title}}</h2>
-        </div>
-        <div class="card-body">
-            <p>{{content}}</p>
-            <p>Created on: {{format_date date_created}}</p>
-        </div>
-    </div>
-</div>
-{{/each}}
+<input id="postId" type="hidden" value="{{id}}">
+<form id="newPost" class="form project-form">
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Title:</label>
+    <input value='{{title}}' type="text" class="form-control" id="title" placeholder="Title">
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Content:</label>
+    <input value='{{content}}' type="text" class="form-control" id="content" placeholder="Content">
+  </div>
+  <div class="mb-3">
+    <button class="btn btn-primary" type="submit">Save</button>
+  </div>
+</form>
+
+<script src="/js/editBtn.js"></script>

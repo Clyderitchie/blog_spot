@@ -1,28 +1,6 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
 
-// Get all post for blog spot website
-router.get('/', async (req, res) => {
-    try {
-        const posts = await Post.findAll();
-        res.status(200).json(posts);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err.message);
-    }
-}) // Works in Thunder Client
-
-// Get post by certain user
-router.get('/:id', async (req, res) => {
-    try {
-        const userPost = await Post.findByPk(req.params.id)
-        res.status(200).json(userPost);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err.message);
-    }
-}) // Works in Thunder Client
-
 // Create a post
 router.post('/', async (req, res) => {
     try {
@@ -36,7 +14,7 @@ router.post('/', async (req, res) => {
         console.log(err.message);
         res.status(500).json(err.message);
     }
-})
+});
 
 // Delete a post
 router.delete('/:id', async (req, res) => {
@@ -46,15 +24,31 @@ router.delete('/:id', async (req, res) => {
                 id: req.params.id,
             },
         });
-        if (!projectData) {
-            res.status(404).json({ message: 'No project found with this id!' });
+        if (!postData) {
+            res.status(404).json({ message: 'No post found with this id!' });
             return;
         }
 
-        res.status(200).json(projectData);
+        res.status(200).json(postData);
     } catch (err) {
+        console.log(err.message);
         res.status(500).json(err.message);
     }
-})
+});
+
+// Edit a post
+router.put('/edit/:id', async (req, res) => {
+    try {
+        const edit = await Post.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+        res.json(edit);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err.message);
+    }
+});
 
 module.exports = router;

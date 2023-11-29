@@ -1,3 +1,5 @@
+{{!-- Renders a single post to a page --}}
+
 <div class="card">
   <div class="card-header fs-4 fw-bolder">
     {{title}}
@@ -8,28 +10,31 @@
     <p class="card-text">Created By: <a class="text-decoration-none text-dark" href="/users/{{user.id}}">{{user.name}}</a> on
       {{format_date date_created}}</p>
   </div>
-  <input id="postId" type="hidden" value="{{id}}">
+</div>
+
+
+{{!-- Adding comments to a post --}}
+<input id="postId" type="hidden" value="{{id}}">
   {{#each comments}}
-  <div class="card comment">
-    <div class="card-header">
-    </div>
+  <div class="card comment mt-3">
     <div class="card-body">
-      <p class="card-text">{{content}}</p>
+      <p class="card-text fs-4">{{content}}</p>
        <p class="card-text">Created By: <a class="text-decoration-none text-dark" href="/users/{{user.id}}">{{user.name}}</a> on
       {{format_date date_created}}</p>
     </div>
+   {{/each}}
   </div>
-  {{/each}}
+<div class="card mt-3">
   {{#if logged_in}}
   <form id="addComment">
-    <div class="input-group input-group-sm mb-3">
+    <div class="input-group input-group-sm ">
       <button id="comment-btn" type="submit" class="btn btn-primary">Add Comment</button>
       <input id="commentInput" type="text" class="form-control" aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-sm">
     </div>
   </form>
   {{else}}
-  <p>You must be logged in to add a comment</p>
+  <h5 class="fs-4 fw-bold">You must be logged in to add a comment</h5>
   {{/if}}
 </div>
 <script src="/js/commentBtn.js"></script>

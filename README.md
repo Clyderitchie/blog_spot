@@ -1,7 +1,7 @@
 # Blog_Spot
 
 ## Deployed link
--   https://fathomless-sands-86425-817adc27230e.herokuapp.com/
+-   https://blogspot-clyde-244c0164fecc.herokuapp.com/
 
 ## Description
 This application is a complete full stack build of a blog website for user to post topics and discuss them with other users. The application is set up to use cookies to track a user whenever they visit the site in order to track their data. The site will also use the hashing of passwords to protect user data. The site is set up to run on jaws database to store any of the data a user inputs.
